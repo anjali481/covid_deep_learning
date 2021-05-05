@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+    <title>COVID-19 Detection using X-ray</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <style>
+
+.title{
+    color: blue;
+    font-size: 40px;
+    text-align: center;
+
+
+
+}
+
+
+.bd{
+    background:black;
+}
+.span1{
+
+
+    color: #ffffff;
+     font-weight: 1000;
+    font-family: 'Open Sans', Helvetica;
+     font-size: 30px;
+      margin-left: 10px;
+}
+
+
+.input1{
+
+    color:transparent;
+    background-color:#4CAF50;
+}
+
+#custom-button{
+
+
+   margin-left: 0px;
+}
+
+.div1{
+    margin-left:50px;
+    margin-top:20px;
+     float:left;
+      position:absolute;
+}
+
+.relative{
+
+    margin-left:50px;
+    margin-top:320px;
+    float:left;
+}
+
+.result{
+
+    margin-right:20px;
+    margin-top:260px;
+    float:left;
+}
+
+    </style>
+</head>
+
+
+
+<body class="bd">
+    <h1  class="title" >COVID-19 Detection using X-rays</h1>
+
+    <div>
+            <span class="span1"><b>Upload an X-ray image!</b></span>
+    </div>
+
+    
+    <form action = "/" method = "post" enctype="multipart/form-data">  
+        <input type="file" name="file" id="profile-img"  class="input1" accept=".jpg,.png"  hidden="hidden" />
+        <button type="button" id="custom-button"   accept="image/*">Choose a file</button>
+        <button type = "submit" value="Upload" class="button button1">Predict!</button>
+        <!--<span id="custom-text">No file chosen, yet.</span>-->
+    </form>
+
+    <div class="div1">
+        <img src="" id="profile-img-tag" height="250px" />
+    </div>
+    
+    <div class="relative" >
+        <button class="button button1" onClick="window.location.reload();">Clear</button>
+        
+    </div>
+
+    <div >
+        <h1 id="result" ><span> </span></h1>
+    </div>
+
+
+    <script type="text/javascript">
+        const realFileBtn = document.getElementById("profile-img");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+
+        customBtn.addEventListener("click", function() {
+        realFileBtn.click();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#profile-img").change(function(){
+            readURL(this);
+        });
+
+        realFileBtn.addEventListener("change", function() {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+            )[1];
+        } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+        }
+        });
+
+    </script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="{{ url_for('static',filename='index.js') }}"></script>
+    <script type="text/javascript">
+
+        $(".myButton").click(function(){
+            var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+            var canvasObj = document.getElementById("canvas");
+            var img = canvasObj.toDataURL();
+            $.ajax({
+                type: "POST",
+                url: $SCRIPT_ROOT + "/predict/",
+                data: img,
+                success: function(data){
+                    $('#result').text(' Predicted Output: '+data);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
