@@ -29,6 +29,9 @@ You can get the dataset from the following link:
 
 https://drive.google.com/file/d/196D_HvmxYW6bJ0MlOvY5PgaEGJR0Oxsb/view
 
+You can download and upload the dataset on your drive
+
+Complete colaboratory code is shared in the link  https://github.com/anjali481/covid_deep_learning/blob/master/Covid_detection.ipynb 
 
 
 
