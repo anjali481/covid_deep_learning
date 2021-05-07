@@ -35,6 +35,15 @@ https://drive.google.com/file/d/196D_HvmxYW6bJ0MlOvY5PgaEGJR0Oxsb/view
 # Results
 Upload the picture of x ray and get the result , whether it is of positive or negative patient.
 
+
+Visualization:
+
+![image](https://user-images.githubusercontent.com/55936581/117395220-2a131600-af15-11eb-9b48-bd68c2a909db.png)
+
+
+![image](https://user-images.githubusercontent.com/55936581/117395109-00f28580-af15-11eb-976d-25256e5ce156.png)
+
+
 ![image](https://user-images.githubusercontent.com/55936581/117391859-79097d00-af0e-11eb-8a7f-dff3d7804f9e.png)
 
 
