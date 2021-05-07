@@ -44,7 +44,9 @@ Upload the picture of x ray and get the result , whether it is of positive or ne
 # Creator 
 
 If you have any query ,you can ping me 
+
 Name: Anjali Deore
+
 LinkedIn: https://www.linkedin.com/in/anjali-deore-002481193/
 
 
